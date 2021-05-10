@@ -54,15 +54,20 @@ class BenfordsLawAssignment{
      * Change these later below if you would like
      */
     public static void loadSalesFile() throws FileNotFoundException{
-
+        // Reinitialized scanner (can't reach)
         Scanner reader = new Scanner(System.in);
+        // Making sure the sales file is in same folder as the this program
         System.out.println("Make sure you have the sales file on your system and in same folder as this program in order to work");
+        // Type in the file name and location (you can try only file name, but if not then just do the file name and location)
         System.out.println("Type your file name and location (e.g. C:\\Users\\Ryan Mah\\Desktop\\BLA\\sales)");
-
+        
+        // Input their file Name and Location
         String fileNameLocation = reader.nextLine(); 
-
+        
+        // Reading the file
         Scanner file = new Scanner(new File(fileNameLocation + ".csv"));
         
+        // Here for now
         while (file.hasNextLine()){
             String s = file.nextLine().trim();
         }
