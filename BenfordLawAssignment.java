@@ -2,16 +2,16 @@
  * Date: May 8th, 2021
  * Name: Ryan M and Saad N
  * Teacher: Mr.Ho
- * Description: 
+ * Description: Benfords Law Sales Program
  * */
 
 import java.util.Scanner;
+import java.io.*;
 
 class BenfordsLawAssignment{
     public static void main(String[] args) throws FileNotFoundException{
         Scanner reader = new Scanner(System.in);
 
-        // Change these if you would like
         String userInput, loadSalesFile, generateBarGraph, generateCsvFile, exitCondition;
         loadSalesFile = "1";
         generateBarGraph = "2";
@@ -41,7 +41,6 @@ class BenfordsLawAssignment{
         reader.close();
         System.out.println("You have exited");
     }
-    // Change these if you would like
     public static void printMenu(){
         System.out.println("Benfords Law\n"
         .concat("1. Load Sales File\n")
@@ -51,9 +50,6 @@ class BenfordsLawAssignment{
         .concat("Enter menu option (1-9)\n")
         );
     }
-    /*
-     * Change these later below if you would like
-     */
     public static void loadSalesFile() throws FileNotFoundException{
         // Reinitialized scanner (can't reach)
         Scanner reader = new Scanner(System.in);
@@ -68,7 +64,6 @@ class BenfordsLawAssignment{
         // Loops through each individual line
         Scanner file = new Scanner(new File(fileNameLocation + ".csv"));
         
-        // Here for now
         while (file.hasNextLine()){
             String s = file.nextLine().trim();
             valueArray = frequencyValues(s, valueArray);
@@ -132,7 +127,4 @@ class BenfordsLawAssignment{
     public static void generateCsvFile(){
 
     }
-    /*
-     *You can add more methods if needed
-     */
 }
