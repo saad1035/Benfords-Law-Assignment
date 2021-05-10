@@ -24,7 +24,7 @@ class BenfordsLawAssignment{
             userInput = reader.nextLine();                
 
             if (userInput.equals(loadSalesFile)){
-                loadSalesFile();
+                loadSalesFile(frequencyArray);
             }
             else if (userInput.equals(generateBarGraph)) {
                 generateBarGraph();
@@ -50,7 +50,7 @@ class BenfordsLawAssignment{
         .concat("Enter menu option (1-9)\n")
         );
     }
-    public static void loadSalesFile() throws FileNotFoundException{
+    public static void loadSalesFile(int[] valueArray) throws FileNotFoundException{
         // Reinitialized scanner (can't reach)
         Scanner reader = new Scanner(System.in);
         // Making sure the sales file is in same folder as the this program
