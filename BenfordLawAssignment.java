@@ -17,6 +17,7 @@ class BenfordsLawAssignment{
         generateBarGraph = "2";
         generateCsvFile = "3";
         exitCondition = "9";
+        int[] frequencyArray = new int[9];
 
         do{
             printMenu();                                    
@@ -64,13 +65,66 @@ class BenfordsLawAssignment{
         // Input their file Name and Location
         String fileNameLocation = reader.nextLine(); 
         
-        // Reading the file
+        // Loops through each individual line
         Scanner file = new Scanner(new File(fileNameLocation + ".csv"));
         
         // Here for now
         while (file.hasNextLine()){
             String s = file.nextLine().trim();
+            valueArray = frequencyValues(s, valueArray);
         }
+    }
+    public static int[] frequencyValues(String value, int[] firstDigitArray) {
+        // Gets the fourth value of each line
+        char firstValue = value.charAt(4);
+
+        // If the value at the 4th character is 1, stores a counter into the array
+        if (firstValue == '1') {
+            firstDigitArray[0] += 1;
+        }
+
+        // If the value at the 4th character is 2, stores a counter into the array
+        else if (firstValue == '2') {
+            firstDigitArray[1] += 1;
+        }
+
+        // If the value at the 4th character is 3, stores a counter into the array
+        else if (firstValue == '3') {
+            firstDigitArray[2] += 1;
+        }
+
+        // If the value at the 4th character is 4, stores a counter into the array
+        else if (firstValue == '4') {
+            firstDigitArray[3] += 1;
+        }
+
+        // If the value at the 4th character is 5, stores a counter into the array
+        else if (firstValue == '5') {
+            firstDigitArray[4] += 1;
+        }
+
+        // If the value at the 4th character is 6, stores a counter into the array
+        else if (firstValue == '6') {
+            firstDigitArray[5] += 1;
+        }
+
+        // If the value at the 4th character is 7, stores a counter into the array
+        else if (firstValue == '7') {
+            firstDigitArray[6] += 1;
+        }
+
+        // If the value at the 4th character is 8, stores a counter into the array
+        else if (firstValue == '8') {
+            firstDigitArray[7] += 1;
+        }
+
+        // If the value at the 4th character is 9, stores a counter into the array
+        else if (firstValue == '9') {
+            firstDigitArray[8] += 1;
+        }
+          
+        // Returns the array with counters stored for each frequency value
+        return firstDigitArray;
     }
     public static void generateBarGraph(){
 
