@@ -8,7 +8,7 @@
 import java.util.Scanner;
 
 class BenfordsLawAssignment{
-    public static void main(String[] args){
+    public static void main(String[] args) throws FileNotFoundException{
         Scanner reader = new Scanner(System.in);
 
         // Change these if you would like
@@ -53,8 +53,19 @@ class BenfordsLawAssignment{
     /*
      * Change these later below if you would like
      */
-    public static void loadSalesFile() {
+    public static void loadSalesFile() throws FileNotFoundException{
 
+        Scanner reader = new Scanner(System.in);
+        System.out.println("Make sure you have the sales file on your system and in same folder as this program in order to work");
+        System.out.println("Type your file name and location (e.g. C:\\Users\\Ryan Mah\\Desktop\\BLA\\sales)");
+
+        String fileNameLocation = reader.nextLine(); 
+
+        Scanner file = new Scanner(new File(fileNameLocation + ".csv"));
+        
+        while (file.hasNextLine()){
+            String s = file.nextLine().trim();
+        }
     }
     public static void generateBarGraph(){
 
