@@ -133,6 +133,30 @@ class BenfordsLawAssignment{
         // Returns sum back to the percentValue method
         return sum;
     }
+    public static void percentValue(int[] freqArray, double[] percentArray) {
+        // Call sumValue method
+        int total = sumValue(freqArray);
+
+        // Places the percentage of each frequency value into a new double array
+        // Rounded to one decimal place
+        for (int i = 0; i < freqArray.length; i++) {
+            percentArray[i] = Math.round((freqArray[i] * 1.0 / total) * 100 * 10.0) / 10.0;
+        }
+
+        // Call numericRepresentation method
+        numericRepresentation(percentArray);
+
+        // IF the first digit frequency is between the range 29<percentArray[0]<32, no fraud occurred
+        // Otherwise, fraud was likely to have occurred
+        if (percentArray[0] > 29 && percentArray[0] < 32) {
+            System.out.println("Scanning the first digit frequency to see if it's within range");
+            System.out.println("There is no fraud present");
+        }
+        else {
+            System.out.println("Scanning the first digit frequency to see if it's within range");
+            System.out.println("Fraud likely occurred");
+        }
+    }
     public static void generateBarGraph(){
 
     }
