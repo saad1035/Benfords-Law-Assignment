@@ -121,6 +121,18 @@ class BenfordsLawAssignment{
         // Returns the array with counters stored for each frequency value
         return firstDigitArray;
     }
+    public static int sumValue(int[] freqArray) {
+        // Declare Variable
+        int sum = 0;
+
+        // Loops through the array and adds all the values up to 'sum' variable
+        for (int i = 0; i < freqArray.length; i++) {
+            sum += freqArray[i];
+        }
+
+        // Returns sum back to the percentValue method
+        return sum;
+    }
     public static void generateBarGraph(){
 
     }
