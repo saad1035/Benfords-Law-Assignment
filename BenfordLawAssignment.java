@@ -7,6 +7,7 @@
 
 import java.util.Scanner;
 import java.io.*;
+import java.lang.Math;
 
 class BenfordsLawAssignment{
     public static void main(String[] args) throws FileNotFoundException{
@@ -18,13 +19,14 @@ class BenfordsLawAssignment{
         generateCsvFile = "3";
         exitCondition = "9";
         int[] frequencyArray = new int[9];
+        double[] finalValueArray = new double[9];
 
         do{
             printMenu();                                    
             userInput = reader.nextLine();                
 
             if (userInput.equals(loadSalesFile)){
-                loadSalesFile(frequencyArray);
+                loadSalesFile(frequencyArray, finalValueArray);
             }
             else if (userInput.equals(generateBarGraph)) {
                 generateBarGraph();
@@ -50,7 +52,7 @@ class BenfordsLawAssignment{
         .concat("Enter menu option (1-9)\n")
         );
     }
-    public static void loadSalesFile(int[] valueArray) throws FileNotFoundException{
+    public static void loadSalesFile(int[] valueArray, double[] percentArray) throws FileNotFoundException{
         // Reinitialized scanner (can't reach)
         Scanner reader = new Scanner(System.in);
         // Making sure the sales file is in same folder as the this program
@@ -68,6 +70,8 @@ class BenfordsLawAssignment{
             String s = file.nextLine().trim();
             valueArray = frequencyValues(s, valueArray);
         }
+        
+        percentValue(valueArray, percentArray);
     }
     public static int[] frequencyValues(String value, int[] firstDigitArray) {
         // Gets the fourth value of each line
@@ -155,6 +159,12 @@ class BenfordsLawAssignment{
         else {
             System.out.println("Scanning the first digit frequency to see if it's within range");
             System.out.println("Fraud likely occurred");
+        }
+    }
+    public static void numericRepresentation(double[] arr) {
+        // Creates a numeric representation of the distribution of the first digits from 1 to 9
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println("Frequency Digit " + (i + 1) + " : " + arr[i] + " %");
         }
     }
     public static void generateBarGraph(){
