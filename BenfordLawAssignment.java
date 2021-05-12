@@ -5,13 +5,13 @@
  * Description: Benfords Law Sales Program
  * */
 
+// Packages used throughout the code    
 import java.util.Scanner;
 import java.io.*;
 import java.lang.Math;
 
 // Packages used to generate graph (JFreeChart)
 import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
 import org.jfree.chart.ChartUtils;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
@@ -42,6 +42,7 @@ class BenfordsLawAssignment{
             else if (userInput.equals(generateBarGraph)) {
                 // Call generateBarGraph method
                 generateBarGraph(finalValueArray);
+                System.out.println("The Bar Graph has been generated. Please look at the folder to view the JPEG file");
             }
             else if (userInput.equals(generateCsvFile)){
                 generateCsvFile(finalValueArray);
@@ -62,6 +63,8 @@ class BenfordsLawAssignment{
         .concat("3. Generate Results in CSV File\n")
         .concat("9. Quit\n")
         .concat("Enter menu option (1-9)\n")
+        .concat("**In order to generate a Bar Graph, Get the Jar File include in the folder and go to\n")
+        .concat("VS Code - Explorer - Java Projects - Referenced Libraries - Add Library and add the jar file**\n")
         );
     }
     /**
@@ -92,10 +95,11 @@ class BenfordsLawAssignment{
         percentValue(valueArray, percentArray);
     }
     /**
-     * 
+     * This method focuses on going through the value at the 4th character in each line and storing the first 
+     * digit of the values in an array
      * @param value
      * @param firstDigitArray
-     * @return
+     * @return firstDigitArray
      */
     public static int[] frequencyValues(String value, int[] firstDigitArray) {
         // Gets the fourth value of each line
@@ -150,9 +154,10 @@ class BenfordsLawAssignment{
         return firstDigitArray;
     }
     /**
-     * 
+     * This method adds all the values in the array together and stores it in the sum variable and gets returned back
+     *
      * @param freqArray
-     * @return
+     * @return sum
      */
     public static int sumValue(int[] freqArray) {
         // Declare Variable
@@ -167,7 +172,9 @@ class BenfordsLawAssignment{
         return sum;
     }
     /**
-     * 
+     * This method gets the percent array of each individual frequency value. An empty array is called which stores the percents
+     * The freqArray is also brought into the method that has the counters for the first digit frequencies. Let's user know if fraud is present or not
+     *
      * @param freqArray
      * @param percentArray
      */
@@ -196,7 +203,8 @@ class BenfordsLawAssignment{
         }
     }
     /**
-     * 
+     * The array with the percents store is brought, and the percentages for the values from 1-9 are printed out in terminal
+     *
      * @param arr
      */
     public static void numericRepresentation(double[] arr) {
@@ -206,7 +214,9 @@ class BenfordsLawAssignment{
         }
     }
     /**
-     * 
+     * This method generates a Bar Graph with the percentArray and is done with the use of a JFreeChart package. 
+     * The graph is stored as a JPEG file in the folder
+     *
      * @param percentArray
      */
     public static void generateBarGraph(double[] percentArray){
@@ -225,7 +235,6 @@ class BenfordsLawAssignment{
         String seven = "7";
         String eight = "8";
         String nine = "9";
-        String blank = "";
 
         // Adds dataset to input the values of the first digit frequencies
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
