@@ -310,13 +310,13 @@ class BenfordsLawAssignment{
             FileWriter fw = new FileWriter(newFile);
             BufferedWriter bw = new BufferedWriter(fw);
             // The titles of the table for the sections
-            bw.write("| F r e q u e n c y |P e r c e n t| ");
+            bw.write("|Frequency Digit # | Percentage| ");
             bw.newLine(); // New lines, not in loop so it doesn't repeat itself and makes format horrible
             bw.newLine();
             // For loop repeats up to finalValueArrayLength
             for (int i = 0; i < finalValueArray.length; i++) {
                 // Writes out to CSV file in a table formatish
-                bw.write("|Frequency Digit " + (i + 1) + "|" + finalValueArray[i] + " %|");
+                bw.write("|Frequency Digit " + (i + 1) + " | " + finalValueArray[i] + " %|");
                 bw.newLine();
                 bw.flush();
             }
