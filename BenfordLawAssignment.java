@@ -44,7 +44,7 @@ class BenfordsLawAssignment{
                 generateBarGraph(finalValueArray);
             }
             else if (userInput.equals(generateCsvFile)){
-                generateCsvFile();
+                generateCsvFile(finalValueArray);
             }
             else{
                 System.out.println("Please type in a valid option (A number from 1-9)");
@@ -237,7 +237,46 @@ class BenfordsLawAssignment{
             System.out.println("Error");
         }
     }
-    public static void generateCsvFile(){
-
+    public static void generateCsvFile(double[] finalValueArray){
+        // Reinitialize without closing
+        Scanner data = new Scanner(System.in);
+        
+        // Input File information (Make sure file and this program are in the same folder) 
+        System.out.println("Enter file name (e.g. results)");
+        String fileNameLocation = data.nextLine(); // where user inputs file name and location
+        File newFile = new File(fileNameLocation + ".csv");
+        // If File exists
+        System.out.println(newFile.exists());
+        // Saying it is generated in the CSV file
+        System.out.println("Your results has been generated");
+                
+        // Creates new file if not already (created within the folder you are in)
+        try {
+            newFile.createNewFile();
+        }
+        catch (IOException e){ // catches any exception
+            e.printStackTrace();
+        }
+        
+        try{
+            // What's being generated in the file
+            FileWriter fw = new FileWriter(newFile);
+            BufferedWriter bw = new BufferedWriter(fw);
+            // The titles of the table for the sections
+            bw.write("| F r e q u e n c y |P e r c e n t| ");
+            bw.newLine(); // New lines, not in loop so it doesn't repeat itself and makes format horrible
+            bw.newLine();
+            // For loop repeats up to finalValueArrayLength
+            for (int i = 0; i < finalValueArray.length; i++) {
+                // Writes out to CSV file in a table formatish
+                bw.write("|Frequency Digit " + (i + 1) + "|" + finalValueArray[i] + " %|");
+                bw.newLine();
+                bw.flush();
+            }
+            bw.close(); // Close Buffered Writer
+        }
+        catch (IOException e){ // Catches any Exception
+            e.printStackTrace();
+        }
     }
 }
