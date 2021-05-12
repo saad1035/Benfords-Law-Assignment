@@ -56,6 +56,9 @@ class BenfordsLawAssignment{
         reader.close();
         System.out.println("You have exited");
     }
+    /**
+     * The menu that prints the options we can choose from to process the analysis of sales file
+     */
     public static void printMenu(){
         System.out.println("Benfords Law Analysis\n"
         .concat("1. Load Sales File\n")
@@ -69,8 +72,8 @@ class BenfordsLawAssignment{
     }
     /**
      * 
-     * @param valueArray
-     * @param percentArray
+     * @param valueArray - stores values of First Digits 1, 2, 3, etc.
+     * @param percentArray - stores percentage of first digit frequency from the sales portion of the file
      * @throws FileNotFoundException
      */
     public static void loadSalesFile(int[] valueArray, double[] percentArray) throws FileNotFoundException{
@@ -97,8 +100,9 @@ class BenfordsLawAssignment{
     /**
      * This method focuses on going through the value at the 4th character in each line and storing the first 
      * digit of the values in an array
-     * @param value
-     * @param firstDigitArray
+     *
+     * @param value - stores value of the digits
+     * @param firstDigitArray - stores the data of first digit from the file
      * @return firstDigitArray
      */
     public static int[] frequencyValues(String value, int[] firstDigitArray) {
@@ -156,7 +160,7 @@ class BenfordsLawAssignment{
     /**
      * This method adds all the values in the array together and stores it in the sum variable and gets returned back
      *
-     * @param freqArray
+     * @param freqArray - occurence of how much it appears as the first digit
      * @return sum
      */
     public static int sumValue(int[] freqArray) {
@@ -175,8 +179,8 @@ class BenfordsLawAssignment{
      * This method gets the percent array of each individual frequency value. An empty array is called which stores the percents
      * The freqArray is also brought into the method that has the counters for the first digit frequencies. Let's user know if fraud is present or not
      *
-     * @param freqArray
-     * @param percentArray
+     * @param freqArray - occurence of how much it appears as the first digit
+     * @param percentArray - stores percentage of the frequency
      */
     public static void percentValue(int[] freqArray, double[] percentArray) {
         // Call sumValue method
@@ -205,7 +209,7 @@ class BenfordsLawAssignment{
     /**
      * The array with the percents store is brought, and the percentages for the values from 1-9 are printed out in terminal
      *
-     * @param arr
+     * @param arr - percentage is stored
      */
     public static void numericRepresentation(double[] arr) {
         // Creates a numeric representation of the distribution of the first digits from 1 to 9
@@ -217,7 +221,7 @@ class BenfordsLawAssignment{
      * This method generates a Bar Graph with the percentArray and is done with the use of a JFreeChart package. 
      * The graph is stored as a JPEG file in the folder
      *
-     * @param percentArray
+     * @param percentArray - percentage stored to put it on bar graph
      */
     public static void generateBarGraph(double[] percentArray){
         // Declare variables that will be used in generating the graph
@@ -277,7 +281,7 @@ class BenfordsLawAssignment{
     }
     /**
      * 
-     * @param finalValueArray
+     * @param finalValueArray - has the percentages of the frequencies stored within
      */
     public static void generateCsvFile(double[] finalValueArray){
         // Reinitialize without closing
