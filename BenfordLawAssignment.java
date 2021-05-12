@@ -9,6 +9,14 @@ import java.util.Scanner;
 import java.io.*;
 import java.lang.Math;
 
+// Packages used to generate graph (JFreeChart)
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.ChartUtils;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
+
 class BenfordsLawAssignment{
     public static void main(String[] args) throws FileNotFoundException{
         Scanner reader = new Scanner(System.in);
@@ -26,10 +34,12 @@ class BenfordsLawAssignment{
             userInput = reader.nextLine();                
 
             if (userInput.equals(loadSalesFile)){
+                // Call loadSalesFile method
                 loadSalesFile(frequencyArray, finalValueArray);
             }
             else if (userInput.equals(generateBarGraph)) {
-                generateBarGraph();
+                // Call generateBarGraph method
+                generateBarGraph(finalValueArray);
             }
             else if (userInput.equals(generateCsvFile)){
                 generateCsvFile();
@@ -167,8 +177,62 @@ class BenfordsLawAssignment{
             System.out.println("Frequency Digit " + (i + 1) + " : " + arr[i] + " %");
         }
     }
-    public static void generateBarGraph(){
+    public static void generateBarGraph(double[] percentArray){
+        // Declare variables that will be used in generating the graph
+        String chartTitle = "Benford's Law Distribution Leading Digit";
+        String xTitle = "First Digit Frequencies";
+        String yTitle = "Percent (%)";
 
+        // More variables that will be used within the x axis (first digit frequencies);
+        String one = "1";
+        String two = "2";
+        String three = "3";
+        String four = "4";
+        String five = "5";
+        String six = "6";
+        String seven = "7";
+        String eight = "8";
+        String nine = "9";
+        String blank = "";
+
+        // Adds dataset to input the values of the first digit frequencies
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+        // Values of all the first digit frequencies inputted onto the chart
+        dataset.addValue(percentArray[0], yTitle, one);
+        dataset.addValue(percentArray[1], yTitle, two);
+        dataset.addValue(percentArray[2], yTitle, three);
+        dataset.addValue(percentArray[3], yTitle, four);
+        dataset.addValue(percentArray[4], yTitle, five);
+        dataset.addValue(percentArray[5], yTitle, six);
+        dataset.addValue(percentArray[6], yTitle, seven);
+        dataset.addValue(percentArray[7], yTitle, eight);
+        dataset.addValue(percentArray[8], yTitle, nine);
+
+        // Creates the bar chart
+        JFreeChart barChart = ChartFactory.createBarChart(
+            chartTitle,
+            xTitle, 
+            yTitle,
+            dataset, PlotOrientation.VERTICAL,
+            true, true, false);
+
+        // Size of the bar chart (width x height)
+        int width = 640;
+        int height = 480;
+
+        // File name
+        File BarChart = new File("BarChart.jpeg");
+        
+        // Saves the chart as a JPEG file into the folder used
+        // If unable to, let's user know 'error' occurred
+        try {
+            ChartUtils.saveChartAsJPEG( BarChart, barChart, width, height);
+
+        }
+        catch (IOException e){ 
+            System.out.println("Error");
+        }
     }
     public static void generateCsvFile(){
 
