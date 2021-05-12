@@ -276,9 +276,9 @@ class BenfordsLawAssignment{
         
         // Input File information (Make sure file and this program are in the same folder) 
         System.out.println("Enter file name (e.g. results)");
-        String fileNameLocation = data.nextLine(); // where user inputs file name and location
-        File newFile = new File(fileNameLocation + ".csv");
-        // If File exists
+        String fileName = data.nextLine(); // where user inputs file name
+        File newFile = new File(fileName + ".csv");
+        // If File exists prints true, if not false, but still generates it
         System.out.println(newFile.exists());
         // Saying it is generated in the CSV file
         System.out.println("Your results has been generated");
