@@ -20,7 +20,8 @@ import org.jfree.data.category.DefaultCategoryDataset;
 class BenfordsLawAssignment{
     public static void main(String[] args) throws FileNotFoundException{
         Scanner reader = new Scanner(System.in);
-
+        
+        // Initialized variables
         String userInput, loadSalesFile, generateBarGraph, generateCsvFile, exitCondition;
         loadSalesFile = "1";
         generateBarGraph = "2";
@@ -28,7 +29,8 @@ class BenfordsLawAssignment{
         exitCondition = "9";
         int[] frequencyArray = new int[9];
         double[] finalValueArray = new double[9];
-
+        
+        // Menu with options to choose from or to quit if thy would like
         do{
             printMenu();                                    
             userInput = reader.nextLine();                
@@ -54,10 +56,10 @@ class BenfordsLawAssignment{
         System.out.println("You have exited");
     }
     public static void printMenu(){
-        System.out.println("Benfords Law\n"
+        System.out.println("Benfords Law Analysis\n"
         .concat("1. Load Sales File\n")
         .concat("2. Generate Bar Graph\n")
-        .concat("3. Generate CSV File\n")
+        .concat("3. Generate Results in CSV File\n")
         .concat("9. Quit\n")
         .concat("Enter menu option (1-9)\n")
         );
@@ -73,9 +75,10 @@ class BenfordsLawAssignment{
         // Input their file Name and Location
         String fileNameLocation = reader.nextLine(); 
         
-        // Loops through each individual line
+        // Reads File
         Scanner file = new Scanner(new File(fileNameLocation + ".csv"));
         
+        // Loops through each individual line
         while (file.hasNextLine()){
             String s = file.nextLine().trim();
             valueArray = frequencyValues(s, valueArray);
