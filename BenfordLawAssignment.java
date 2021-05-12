@@ -205,6 +205,7 @@ class BenfordsLawAssignment{
             System.out.println("Scanning the first digit frequency to see if it's within range");
             System.out.println("Fraud likely occurred");
         }
+        System.out.println();
     }
     /**
      * The array with the percents store is brought, and the percentages for the values from 1-9 are printed out in terminal
