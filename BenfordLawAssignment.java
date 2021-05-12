@@ -71,7 +71,8 @@ class BenfordsLawAssignment{
         );
     }
     /**
-     * 
+     * User inputs file to load to this program, then the program reads the whole file (without printing line for line)
+     *
      * @param valueArray - stores values of First Digits 1, 2, 3, etc.
      * @param percentArray - stores percentage of first digit frequency from the sales portion of the file
      * @throws FileNotFoundException
