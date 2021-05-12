@@ -64,6 +64,12 @@ class BenfordsLawAssignment{
         .concat("Enter menu option (1-9)\n")
         );
     }
+    /**
+     * 
+     * @param valueArray
+     * @param percentArray
+     * @throws FileNotFoundException
+     */
     public static void loadSalesFile(int[] valueArray, double[] percentArray) throws FileNotFoundException{
         // Reinitialized scanner (can't reach)
         Scanner reader = new Scanner(System.in);
@@ -82,10 +88,15 @@ class BenfordsLawAssignment{
         while (file.hasNextLine()){
             String s = file.nextLine().trim();
             valueArray = frequencyValues(s, valueArray);
-        }
-        
+        } 
         percentValue(valueArray, percentArray);
     }
+    /**
+     * 
+     * @param value
+     * @param firstDigitArray
+     * @return
+     */
     public static int[] frequencyValues(String value, int[] firstDigitArray) {
         // Gets the fourth value of each line
         char firstValue = value.charAt(4);
@@ -138,6 +149,11 @@ class BenfordsLawAssignment{
         // Returns the array with counters stored for each frequency value
         return firstDigitArray;
     }
+    /**
+     * 
+     * @param freqArray
+     * @return
+     */
     public static int sumValue(int[] freqArray) {
         // Declare Variable
         int sum = 0;
@@ -150,6 +166,11 @@ class BenfordsLawAssignment{
         // Returns sum back to the percentValue method
         return sum;
     }
+    /**
+     * 
+     * @param freqArray
+     * @param percentArray
+     */
     public static void percentValue(int[] freqArray, double[] percentArray) {
         // Call sumValue method
         int total = sumValue(freqArray);
@@ -174,12 +195,20 @@ class BenfordsLawAssignment{
             System.out.println("Fraud likely occurred");
         }
     }
+    /**
+     * 
+     * @param arr
+     */
     public static void numericRepresentation(double[] arr) {
         // Creates a numeric representation of the distribution of the first digits from 1 to 9
         for (int i = 0; i < arr.length; i++) {
             System.out.println("Frequency Digit " + (i + 1) + " : " + arr[i] + " %");
         }
     }
+    /**
+     * 
+     * @param percentArray
+     */
     public static void generateBarGraph(double[] percentArray){
         // Declare variables that will be used in generating the graph
         String chartTitle = "Benford's Law Distribution Leading Digit";
@@ -237,6 +266,10 @@ class BenfordsLawAssignment{
             System.out.println("Error");
         }
     }
+    /**
+     * 
+     * @param finalValueArray
+     */
     public static void generateCsvFile(double[] finalValueArray){
         // Reinitialize without closing
         Scanner data = new Scanner(System.in);
