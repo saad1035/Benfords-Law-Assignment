@@ -281,7 +281,8 @@ class BenfordsLawAssignment{
         }
     }
     /**
-     * 
+     * Generates CSV file of the frequencies (%) of the first digits of the sales file (sales portion) into a table format
+     *
      * @param finalValueArray - has the percentages of the frequencies stored within
      */
     public static void generateCsvFile(double[] finalValueArray){
